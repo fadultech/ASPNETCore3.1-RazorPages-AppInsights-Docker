@@ -12,6 +12,10 @@ pool:
 steps:
 - script: echo Olá PUC Poços de Caldas!
   displayName: 'Mensagem de teste'
+- script: |
+    echo Teste!
+    dotnet --list-sdks
+  displayName: 'Testando instalações do .NET'
 - task: DotNetCoreCLI@2
   displayName: 'Build do projeto .NET Core'
   inputs:
