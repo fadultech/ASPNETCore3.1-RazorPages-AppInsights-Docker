@@ -35,4 +35,3 @@ steps:
     appType: 'webAppLinux'
     WebAppName: 'groffe-exemplo-puc'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'DOTNETCORE|3.1'
