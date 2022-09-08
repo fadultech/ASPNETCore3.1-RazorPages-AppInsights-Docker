@@ -3,6 +3,7 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+# Poderia ter um pipeline para uma branch de teste
 trigger:
 - master
 
@@ -10,33 +11,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Olá PUC Poços de Caldas!
+- script: echo Olá Fadultech!
   displayName: 'Mensagem de teste'
-- script: |
-    echo Teste!
-    dotnet --list-sdks
-  displayName: 'Testando instalações do .NET'
+
 - task: DotNetCoreCLI@2
-  displayName: 'Build do projeto .NET Core'
   inputs:
     command: 'publish'
     publishWebProjects: true
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish de Artifact'
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'groffesitepuc'
-    publishLocation: 'Container'
-- task: AzureRmWebAppDeployment@4
-  displayName: 'Publish no Azure App Service'
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Microsoft Azure Sponsorship(f3e7d90b-efba-4481-ac3d-d8df26b6235d)'
-    appType: 'webAppLinux'
-    WebAppName: 'groffe-exemplo-puc'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '5.0.x'
-- script: dotnet --list-sdks
